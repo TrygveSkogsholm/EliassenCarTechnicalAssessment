@@ -1,0 +1,70 @@
+﻿@model IEnumerable<CarSelector.Models.Car>
+
+@{
+    ViewData["Title"] = "By Value";
+}
+
+<h2>Vehicles by Value</h2>
+<span>Value is calculated as the TCC rating divided by the price.</span>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Value (TCC/$) x 10<sup>-4</sup>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TCC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Make)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MPG)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @String.Format("{0:0.##}", 10000 * item.TCC / (float)item.Price)
+                </td>
+                <td>
+                    @String.Format("{0:C}", item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TCC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Make)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MPG)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

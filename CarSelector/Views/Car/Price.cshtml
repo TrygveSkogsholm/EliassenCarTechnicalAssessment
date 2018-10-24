@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CarSelector.Models.Car>
+
+@{
+    ViewData["Title"] = "By Price";
+}
+
+<h2>Vehicles by Price</h2>
+<span>Vehicles are listed from least expensive to most.</span>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Make)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Model)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Color)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Year)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TCC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MPG)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Make)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @String.Format("{0:C}", item.Price)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TCC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MPG)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

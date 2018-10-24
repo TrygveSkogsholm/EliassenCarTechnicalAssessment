@@ -1,0 +1,33 @@
+﻿@model IEnumerable<CarSelector.Models.YearMPG>
+
+@{
+    ViewData["Title"] = "Year MPG";
+}
+
+<h2>Year MPG</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MPG)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @String.Format("{0:0.#}", item.MPG)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,14 @@
+﻿@model CarSelector.Models.Car
+
+@{
+    ViewData["Title"] = "Random";
+}
+
+<h2>A Random Car</h2>
+<br/>
+<h3>@Model.Make @Model.Model</h3>
+<div>Price: @String.Format("{0:C}", Model.Price)</div>
+<div>Color: @Model.Color</div>
+<div>Year: @Model.Year</div>
+<div>TCC Rating: @Model.TCC</div>
+<div>MPG: @Model.MPG</div>

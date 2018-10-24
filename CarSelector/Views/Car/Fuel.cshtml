@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CarSelector.Models.Car>
+
+@{
+    ViewData["Title"] = "Mileage";
+}
+
+<h2>Fuel Consumption</h2>
+
+<form method="get" action="/Car/Fuel/">
+    <input type="number" max="24000" min="0" name="distance" value="@ViewData["Distance"]" step=any required placeholder="Miles to Travel"/>
+    <input type="submit" value="Calculate" />
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Fuel Required (Gallons)
+            </th>
+            <th>
+                Car
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MPG)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @String.Format("{0:0.#}", (float)ViewData["Distance"]/item.MPG)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year) @Html.DisplayFor(modelItem => item.Make) @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MPG)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
